@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "bajwa-surgical-store",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/products.json", "headers": { "Cache-Control": "no-cache" } },
+    { "src": "/images/(.*)", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
